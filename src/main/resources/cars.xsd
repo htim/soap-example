@@ -1,0 +1,46 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://epam.com/demo/soap/WSCar10"
+           targetNamespace="http://epam.com/demo/soap/WSCar10" elementFormDefault="qualified">
+
+    <xs:element name="GetCarsByBrandRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="inParams" type="tns:GetCarsByBrandInParams"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="GetCarsByBrandResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="outParams" type="tns:GetCarsByBrandOutParams"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="GetCarsByBrandInParams">
+        <xs:sequence>
+            <xs:element name="brandName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GetCarsByBrandOutParams">
+        <xs:sequence>
+            <xs:element name="ResultSet" type="tns:GetCarsByBrandOutResultSet"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GetCarsByBrandOutResultSet">
+        <xs:sequence>
+            <xs:element name="ResultSetRow" type="tns:GetCarsByBrandOutResultSetRow" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GetCarsByBrandOutResultSetRow">
+        <xs:sequence>
+            <xs:element name="brand" type="xs:string"/>
+            <xs:element name="model" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
